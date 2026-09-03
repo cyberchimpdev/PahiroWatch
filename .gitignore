@@ -7,7 +7,10 @@ __pycache__/
 backend/venv/
 .pytest_cache/
 *.db
+*.db-shm
+*.db-wal
 *.sqlite3
+pahirowatch.db*
 
 # Node
 node_modules/
