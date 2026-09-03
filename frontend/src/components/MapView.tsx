@@ -93,7 +93,7 @@ export const MapView: React.FC<MapViewProps> = ({
   onSelectLocation
 }) => {
   const defaultCenter: [number, number] = [27.8300, 84.5450]; // Narayanghat-Mugling center
-  const [mapLayer, setMapLayer] = useState<'DARK' | 'SATELLITE'>('DARK');
+  const [mapLayer, setMapLayer] = useState<'DARK' | 'SATELLITE' | 'TOPO'>('SATELLITE');
 
   // Highway polyline corridor path
   const highwayPath: [number, number][] = locations
@@ -104,20 +104,47 @@ export const MapView: React.FC<MapViewProps> = ({
   return (
     <div className="relative w-full h-full min-h-[440px] bg-[#070a12] overflow-hidden rounded-xl border border-slate-800 shadow-2xl flex flex-col">
       
-      {/* Top Map Bar: Status & Layer Switcher */}
+      {/* Top Map Bar: Status & Corridor Title */}
       <div className="absolute top-3 left-3 z-[400] bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-lg px-3 py-1.5 shadow-2xl text-xs font-mono flex items-center gap-2 pointer-events-auto">
         <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
         <span className="text-white font-bold tracking-wider">NH-05 CORRIDOR MAP</span>
         <span className="text-slate-400 text-[11px]">(KM 24 to KM 38)</span>
       </div>
 
-      <div className="absolute top-3 right-3 z-[400] flex items-center gap-2 pointer-events-auto">
+      {/* Top Right: Layer Switcher (Dark, Satellite, Topo) */}
+      <div className="absolute top-3 right-3 z-[400] flex items-center gap-1.5 pointer-events-auto bg-slate-900/95 backdrop-blur-md border border-slate-700/90 rounded-lg p-1 shadow-2xl">
         <button
-          onClick={() => setMapLayer(mapLayer === 'DARK' ? 'SATELLITE' : 'DARK')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900/95 hover:bg-slate-800 text-slate-200 text-xs font-mono font-semibold border border-slate-700 shadow-xl transition-all cursor-pointer"
+          onClick={() => setMapLayer('SATELLITE')}
+          className={`px-2.5 py-1 rounded text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+            mapLayer === 'SATELLITE'
+              ? 'bg-blue-600 text-white shadow'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800'
+          }`}
         >
-          <Layers size={14} className="text-blue-400 shrink-0 inline-block" />
-          <span>{mapLayer === 'DARK' ? 'SATELLITE IMAGERY' : 'DARK MAP'}</span>
+          <Layers size={13} className="shrink-0" />
+          <span>SATELLITE</span>
+        </button>
+
+        <button
+          onClick={() => setMapLayer('DARK')}
+          className={`px-2.5 py-1 rounded text-xs font-mono font-bold transition-all cursor-pointer ${
+            mapLayer === 'DARK'
+              ? 'bg-blue-600 text-white shadow'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800'
+          }`}
+        >
+          DARK HUD
+        </button>
+
+        <button
+          onClick={() => setMapLayer('TOPO')}
+          className={`px-2.5 py-1 rounded text-xs font-mono font-bold transition-all cursor-pointer ${
+            mapLayer === 'TOPO'
+              ? 'bg-blue-600 text-white shadow'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800'
+          }`}
+        >
+          TOPO
         </button>
 
         <button
@@ -126,10 +153,10 @@ export const MapView: React.FC<MapViewProps> = ({
               onSelectLocation(selectedLocation);
             }
           }}
-          className="p-1.5 rounded-lg bg-slate-900/95 hover:bg-slate-800 text-slate-200 border border-slate-700 shadow-xl transition-all cursor-pointer"
+          className="p-1 rounded text-slate-400 hover:text-emerald-400 hover:bg-slate-800 transition-all cursor-pointer ml-1"
           title="Recenter Highway Corridor"
         >
-          <Crosshair size={16} className="text-emerald-400 shrink-0 inline-block" />
+          <Crosshair size={15} className="shrink-0" />
         </button>
       </div>
 
@@ -146,18 +173,50 @@ export const MapView: React.FC<MapViewProps> = ({
             <RecenterMap coords={[selectedLocation.latitude, selectedLocation.longitude]} zoom={13} />
           )}
 
-          {/* Dynamic Basemap Layer */}
-          {mapLayer === 'DARK' ? (
+          {/* Dynamic Basemap Layers (Zero API Key, Zero Watermark) */}
+          {mapLayer === 'SATELLITE' && (
+            <>
+              <TileLayer
+                key="sat-base"
+                attribution='&copy; Esri, Maxar, Earthstar Geographics'
+                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                maxZoom={19}
+                maxNativeZoom={18}
+              />
+              <TileLayer
+                key="sat-ref"
+                url="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
+                maxZoom={19}
+                maxNativeZoom={18}
+              />
+            </>
+          )}
+
+          {mapLayer === 'DARK' && (
+            <>
+              <TileLayer
+                key="dark-base"
+                attribution='&copy; Esri, HERE, Garmin, &copy; OpenStreetMap'
+                url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+                maxZoom={19}
+                maxNativeZoom={16}
+              />
+              <TileLayer
+                key="dark-ref"
+                url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}"
+                maxZoom={19}
+                maxNativeZoom={16}
+              />
+            </>
+          )}
+
+          {mapLayer === 'TOPO' && (
             <TileLayer
-              attribution='&copy; <a href="https://carto.com/">CARTO</a>'
-              url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+              key="topo-base"
+              attribution='&copy; Esri, USGS'
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
               maxZoom={19}
-            />
-          ) : (
-            <TileLayer
-              attribution='&copy; Esri, Maxar'
-              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-              maxZoom={19}
+              maxNativeZoom={18}
             />
           )}
 
