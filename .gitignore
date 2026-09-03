@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+.pytest_cache/
+*.db
+*.sqlite3
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Environment Variables & Secrets
+.env
+.env.production
+*.pem
+*.key
+
+# IDE & OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
