@@ -15,6 +15,7 @@ class DeterministicSafetyFallback:
     @staticmethod
     def execute_fallback_loop(state: AgentState, tools: ToolRegistry, trace_recorder) -> AgentState:
         state.is_resilience_mode = True
+        state.step_count = 0
         trace_step = 1
 
         trace_recorder(

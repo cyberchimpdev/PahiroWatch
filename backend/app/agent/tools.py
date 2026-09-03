@@ -57,7 +57,7 @@ class ToolRegistry:
     def get_satellite_change(self, state, simulate_failure: bool = False) -> Dict[str, Any]:
         status = "SUCCESS"
         if state.scenario_override == "MONSOON":
-            if simulate_failure:
+            if simulate_failure or state.retries_count == 0:
                 state.retries_count += 1
                 raise TimeoutError("Copernicus Sentinel Hub API timeout: satellite imagery processing pipeline unreachable (HTTP 504)")
             else:

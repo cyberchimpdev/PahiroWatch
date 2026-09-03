@@ -7,6 +7,7 @@ from backend.app.config import HACKATHON_KEY, OPENAI_API_BASE, MODEL_NAME
 from backend.app.agent.state import AgentState
 from backend.app.agent.tools import ToolRegistry, AgentSecurityError
 from backend.app.agent.fallback import DeterministicSafetyFallback
+from backend.app.agent.react_agent import ReActAgentEngine
 from backend.app.agent.cost_tracker import CostTracker
 from backend.app.engine.llm_client import HackathonLLMClient
 from backend.app.db.database import get_db_connection
@@ -76,7 +77,7 @@ class AgentController:
 
         if use_live_llm:
             try:
-                state = self._execute_llm_loop(state)
+                state = ReActAgentEngine.execute_react_loop(state, self.tools, self.record_trace)
             except Exception as e:
                 # LLM failed/timed out -> fall back to deterministic safety engine
                 state.is_resilience_mode = True
