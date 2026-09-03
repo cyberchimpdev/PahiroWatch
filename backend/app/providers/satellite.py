@@ -1,6 +1,6 @@
 import datetime
 from typing import Dict, Any
-from backend.app.providers.base import BaseSatelliteProvider
+from app.providers.base import BaseSatelliteProvider
 
 class SatelliteProvider(BaseSatelliteProvider):
     """

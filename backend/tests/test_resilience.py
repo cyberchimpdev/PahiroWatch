@@ -1,4 +1,4 @@
-from backend.app.agent.loop import AgentController
+from app.agent.loop import AgentController
 
 def test_bad_day_scenario_graceful_resilience():
     controller = AgentController()

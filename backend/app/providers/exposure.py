@@ -1,5 +1,5 @@
 from typing import Dict, Any, List
-from backend.app.providers.base import BaseExposureProvider
+from app.providers.base import BaseExposureProvider
 
 class ExposureProvider(BaseExposureProvider):
     """

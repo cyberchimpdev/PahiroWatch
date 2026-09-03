@@ -1,7 +1,7 @@
 import json
 from typing import Dict, Any, List
-from backend.app.providers.base import BaseMemoryProvider
-from backend.app.db.database import get_db_connection
+from app.providers.base import BaseMemoryProvider
+from app.db.database import get_db_connection
 
 class MemoryProvider(BaseMemoryProvider):
     """

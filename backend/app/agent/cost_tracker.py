@@ -1,4 +1,4 @@
-from backend.app.config import (
+from app.config import (
     USD_TO_NPR_RATE,
     COST_PER_1K_PROMPT_TOKENS_USD,
     COST_PER_1K_COMPLETION_TOKENS_USD

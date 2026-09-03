@@ -1,7 +1,7 @@
 import datetime
 import random
 from typing import Dict, Any
-from backend.app.providers.base import BaseWeatherProvider
+from app.providers.base import BaseWeatherProvider
 
 class WeatherProvider(BaseWeatherProvider):
     """

@@ -1,7 +1,7 @@
 import sqlite3
 import os
 from pathlib import Path
-from backend.app.config import DB_PATH
+from app.config import DB_PATH
 
 def get_db_connection():
     db_target = os.getenv("DATABASE_PATH", DB_PATH)

@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 # Load from .env file
 load_dotenv()
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-DB_PATH = os.getenv("DATABASE_PATH", str(BASE_DIR / "backend" / "pahirowatch.db"))
+BASE_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = os.getenv("DATABASE_PATH", str(BASE_DIR / "pahirowatch.db"))
 
 HACKATHON_KEY = os.getenv("HACKATHON_KEY", "")
 OPENAI_API_BASE = os.getenv("OPENAI_API_BASE", "https://api.openai.com/v1")

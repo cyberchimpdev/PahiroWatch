@@ -1,9 +1,9 @@
 from typing import Dict, Any, List
-from backend.app.agent.state import AgentState
-from backend.app.agent.tools import ToolRegistry
-from backend.app.engine.risk_calculator import RiskCalculator
-from backend.app.engine.confidence_engine import ConfidenceEngine
-from backend.app.engine.alert_generator import AlertGenerator
+from app.agent.state import AgentState
+from app.agent.tools import ToolRegistry
+from app.engine.risk_calculator import RiskCalculator
+from app.engine.confidence_engine import ConfidenceEngine
+from app.engine.alert_generator import AlertGenerator
 
 class DeterministicSafetyFallback:
     """

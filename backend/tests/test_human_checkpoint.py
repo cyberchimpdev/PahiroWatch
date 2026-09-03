@@ -1,7 +1,7 @@
 import pytest
-from backend.app.agent.state import AgentState
-from backend.app.agent.tools import ToolRegistry, AgentSecurityError
-from backend.app.db.database import get_db_connection
+from app.agent.state import AgentState
+from app.agent.tools import ToolRegistry, AgentSecurityError
+from app.db.database import get_db_connection
 
 def test_send_alert_fails_closed_without_approval():
     tools = ToolRegistry()

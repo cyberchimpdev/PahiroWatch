@@ -3,14 +3,14 @@ import json
 import uuid
 import httpx
 from typing import Dict, Any, Optional
-from backend.app.config import HACKATHON_KEY, OPENAI_API_BASE, MODEL_NAME
-from backend.app.agent.state import AgentState
-from backend.app.agent.tools import ToolRegistry, AgentSecurityError
-from backend.app.agent.fallback import DeterministicSafetyFallback
-from backend.app.agent.react_agent import ReActAgentEngine
-from backend.app.agent.cost_tracker import CostTracker
-from backend.app.engine.llm_client import HackathonLLMClient
-from backend.app.db.database import get_db_connection
+from app.config import HACKATHON_KEY, OPENAI_API_BASE, MODEL_NAME
+from app.agent.state import AgentState
+from app.agent.tools import ToolRegistry, AgentSecurityError
+from app.agent.fallback import DeterministicSafetyFallback
+from app.agent.react_agent import ReActAgentEngine
+from app.agent.cost_tracker import CostTracker
+from app.engine.llm_client import HackathonLLMClient
+from app.db.database import get_db_connection
 
 class AgentController:
     """

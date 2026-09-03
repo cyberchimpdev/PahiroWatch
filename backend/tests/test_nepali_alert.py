@@ -1,5 +1,5 @@
 import pytest
-from backend.app.engine.alert_generator import AlertGenerator
+from app.engine.alert_generator import AlertGenerator
 
 def test_nepali_and_low_bw_alert_generation():
     alerts = AlertGenerator.generate_alerts(

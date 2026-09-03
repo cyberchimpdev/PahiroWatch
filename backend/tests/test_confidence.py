@@ -1,5 +1,5 @@
 import pytest
-from backend.app.engine.confidence_engine import ConfidenceEngine
+from app.engine.confidence_engine import ConfidenceEngine
 
 def test_confidence_all_sources_good():
     weather = {"rainfall_24h_mm": 120.0, "is_stale": False}
