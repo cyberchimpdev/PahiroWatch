@@ -1,33 +1,44 @@
+# Environment variables - NEVER commit secrets
+.env
+.env.*
+!.env.example
+
 # Python
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-.Python
+*$py.class
 *.so
 *.egg-info/
+*.egg
 dist/
 build/
-*.egg
+eggs/
+*.whl
 
 # Django
 db.sqlite3
+db.sqlite3-journal
 *.log
 local_settings.py
 media/
 staticfiles/
+static_collected/
 
-# ML Model
+# ML Models - contain trained weights
 *.joblib
 *.pkl
 *.h5
 *.pt
+*.onnx
+model_*.joblib
+landslide_rf_model.joblib
 
-# Node
+# Node.js
 node_modules/
-dist/
-.env
-.env.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+frontend/dist/
 
 # IDE
 .vscode/
@@ -35,15 +46,36 @@ dist/
 *.swp
 *.swo
 *~
+.project
+.classpath
+.settings/
 
 # OS
 Thumbs.db
-.DS_Store
+ehthumbs.db
 Desktop.ini
+.DS_Store
+._*
 
-# Vite
-frontend/dist/
-
-# Temporary
+# Temporary files
 *.tmp
 *.bak
+*.backup
+*.orig
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Secrets
+*secret*
+*credentials*
+*token*
