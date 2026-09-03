@@ -1,8 +1,8 @@
 import os
 import tempfile
 import pytest
-from backend.app.db.database import init_db
-from backend.app.db.seed_data import seed_database
+from app.db.database import init_db
+from app.db.seed_data import seed_database
 
 @pytest.fixture(scope="session", autouse=True)
 def test_db_session():

@@ -1,5 +1,5 @@
 import pytest
-from backend.app.engine.risk_calculator import RiskCalculator
+from app.engine.risk_calculator import RiskCalculator
 
 def test_risk_calculator_monsoon_high():
     weather = {"rainfall_24h_mm": 184.0}

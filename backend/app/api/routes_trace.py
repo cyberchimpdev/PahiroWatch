@@ -1,7 +1,7 @@
 import json
 from fastapi import APIRouter, HTTPException, Query
 from typing import Optional, List, Dict, Any
-from backend.app.db.database import get_db_connection
+from app.db.database import get_db_connection
 
 router = APIRouter(prefix="/api/agent", tags=["Agent Trace & Metrics"])
 

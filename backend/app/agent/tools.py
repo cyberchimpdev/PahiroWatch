@@ -2,13 +2,13 @@ import json
 import uuid
 import datetime
 from typing import Dict, Any, Tuple
-from backend.app.providers.weather import WeatherProvider
-from backend.app.providers.terrain import TerrainProvider
-from backend.app.providers.satellite import SatelliteProvider
-from backend.app.providers.exposure import ExposureProvider
-from backend.app.providers.memory import MemoryProvider
-from backend.app.engine.alert_generator import AlertGenerator
-from backend.app.db.database import get_db_connection
+from app.providers.weather import WeatherProvider
+from app.providers.terrain import TerrainProvider
+from app.providers.satellite import SatelliteProvider
+from app.providers.exposure import ExposureProvider
+from app.providers.memory import MemoryProvider
+from app.engine.alert_generator import AlertGenerator
+from app.db.database import get_db_connection
 
 class AgentSecurityError(Exception):
     """Raised when an unauthorized consequential action is attempted."""

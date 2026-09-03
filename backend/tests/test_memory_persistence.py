@@ -1,5 +1,5 @@
-from backend.app.agent.loop import AgentController
-from backend.app.providers.memory import MemoryProvider
+from app.agent.loop import AgentController
+from app.providers.memory import MemoryProvider
 
 def test_memory_persistence_cross_runs():
     controller = AgentController()

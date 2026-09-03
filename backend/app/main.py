@@ -1,11 +1,11 @@
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app.db.database import init_db, get_db_connection
-from backend.app.db.seed_data import seed_database
-from backend.app.api.routes_monitor import router as monitor_router
-from backend.app.api.routes_incidents import router as incidents_router
-from backend.app.api.routes_trace import router as trace_router
+from app.db.database import init_db, get_db_connection
+from app.db.seed_data import seed_database
+from app.api.routes_monitor import router as monitor_router
+from app.api.routes_incidents import router as incidents_router
+from app.api.routes_trace import router as trace_router
 
 app = FastAPI(
     title="PahiroWatch API",

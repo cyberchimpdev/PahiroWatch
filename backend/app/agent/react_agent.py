@@ -2,12 +2,12 @@ import json
 import re
 import time
 from typing import Dict, Any, List, Optional, Tuple
-from backend.app.agent.state import AgentState
-from backend.app.agent.tools import ToolRegistry, AgentSecurityError
-from backend.app.engine.llm_client import HackathonLLMClient
-from backend.app.engine.risk_calculator import RiskCalculator
-from backend.app.engine.confidence_engine import ConfidenceEngine
-from backend.app.engine.alert_generator import AlertGenerator
+from app.agent.state import AgentState
+from app.agent.tools import ToolRegistry, AgentSecurityError
+from app.engine.llm_client import HackathonLLMClient
+from app.engine.risk_calculator import RiskCalculator
+from app.engine.confidence_engine import ConfidenceEngine
+from app.engine.alert_generator import AlertGenerator
 
 SYSTEM_PROMPT = """You are PahiroWatch, an autonomous geospatial AI agent monitoring the Narayanghat-Mugling Highway (NH-05) in Ichhyakamana Rural Municipality, Nepal.
 Your mission is to assess emerging landslide hazards for highway sectors, determine geotechnical risk, and recommend operational interventions.

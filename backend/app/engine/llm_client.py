@@ -4,7 +4,7 @@ import ssl
 import urllib.request
 import certifi
 from typing import Dict, Any, Optional, List
-from backend.app.config import HACKATHON_KEY, OPENAI_API_BASE, MODEL_NAME
+from app.config import HACKATHON_KEY, OPENAI_API_BASE, MODEL_NAME
 
 class HackathonLLMClient:
     """

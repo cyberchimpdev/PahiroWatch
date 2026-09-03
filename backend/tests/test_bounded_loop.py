@@ -1,4 +1,4 @@
-from backend.app.agent.loop import AgentController
+from app.agent.loop import AgentController
 
 def test_monsoon_scenario_bounded_and_escalates():
     controller = AgentController()

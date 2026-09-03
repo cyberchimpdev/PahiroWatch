@@ -1,5 +1,5 @@
 import json
-from backend.app.db.database import get_db_connection, init_db
+from app.db.database import get_db_connection, init_db
 
 PILOT_LOCATIONS = [
     {
