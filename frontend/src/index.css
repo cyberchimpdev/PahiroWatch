@@ -1,17 +1,111 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --bg-primary: #070a12;
+  --bg-surface: #0e1626;
+  --bg-surface-elevated: #162238;
+  --border-muted: #1e293b;
+  --border-subtle: #2a3a54;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-red: #ef4444;
+  --accent-amber: #f59e0b;
+  --accent-green: #10b981;
+  --accent-cyan: #06b6d4;
+  --accent-nepal: #2563eb;
 }
 
 body {
-  background-color: #020617;
-  color: #f1f5f9;
-  font-family: 'Inter', system-ui, sans-serif;
-  overflow: hidden;
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-#root {
+/* CRITICAL: Ensure Lucide SVG icons never collapse or vanish */
+svg.lucide, svg {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  flex-shrink: 0 !important;
+  overflow: visible !important;
+}
+
+/* Custom Monospace for Terminal & Telemetry */
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080c14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Leaflet Container */
+.leaflet-container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  background: #080c14 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Overhaul Leaflet Popups to Sleek, High-Contrast Dark HUD */
+.leaflet-popup-content-wrapper {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border: 1px solid #475569 !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.9) !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+  line-height: 1.5 !important;
+  color: #ffffff !important;
+  min-width: 200px;
+}
+
+.leaflet-popup-tip {
+  background: #0f172a !important;
+  border: 1px solid #475569 !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: #94a3b8 !important;
+  padding: 6px 8px !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: #ffffff !important;
+}
+
+/* Pulsing radar dot for active surveillance */
+@keyframes pulse-radar {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.radar-live {
+  animation: pulse-radar 1.5s infinite;
 }

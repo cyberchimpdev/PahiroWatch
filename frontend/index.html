@@ -3,81 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BhumiSense AI - Corridor Disaster Sentinel</title>
+    <title>PahiroWatch — Autonomous Landslide Risk & Response Agent (Nepal)</title>
+    <meta name="description" content="Detect the slope. Protect the road. Alert before the disaster. Autonomous geospatial response agent for Nepal lifeline corridors." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'system-ui', 'sans-serif'],
-              mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
-            },
-            colors: {
-              dark: {
-                950: '#020617',
-                900: '#0f172a',
-                800: '#1e293b',
-                700: '#334155',
-                600: '#475569',
-              },
-              danger: {
-                50: '#fef2f2',
-                100: '#fee2e2',
-                400: '#f87171',
-                500: '#ef4444',
-                600: '#dc2626',
-                900: '#7f1d1d',
-                950: '#450a0a',
-              },
-              success: {
-                400: '#4ade80',
-                500: '#22c55e',
-                600: '#16a34a',
-                900: '#14532d',
-                950: '#052e16',
-              },
-              warning: {
-                400: '#fbbf24',
-                500: '#f59e0b',
-                600: '#d97706',
-              }
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body {
-        background-color: #020617;
-        color: #f1f5f9;
-        font-family: 'Inter', system-ui, sans-serif;
-        overflow: hidden;
-      }
-      #root { width: 100%; height: 100vh; }
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #0f172a; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-      ::-webkit-scrollbar-thumb:hover { background: #475569; }
-      @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 5px rgba(239,68,68,0.3); } 50% { box-shadow: 0 0 20px rgba(239,68,68,0.6); } }
-      @keyframes slide-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-      @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-      .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
-      .animate-slide-in { animation: slide-in 0.3s ease-out; }
-      .animate-fade-in { animation: fade-in 0.5s ease-out; }
-      .glass { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.5); }
-      .glass-hover:hover { background: rgba(30, 41, 59, 0.7); border-color: rgba(71, 85, 105, 0.6); }
-      .glow-green { box-shadow: 0 0 10px rgba(34, 197, 94, 0.2); }
-      .glow-red { box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
-      .trace-entry { animation: slide-in 0.3s ease-out; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="bg-[#080c14] text-slate-100 antialiased selection:bg-red-900 selection:text-white">
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
